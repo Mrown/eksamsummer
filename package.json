@@ -1,0 +1,31 @@
+{
+  "name": "yadda-main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mrown/eksamsummer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mrown/eksamsummer/issues"
+  },
+  "devDependencies": {
+    "dotenv": "8.2.0"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.4",
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "flash": "^1.1.0",
+    "mongoose": "^5.12.9",
+    "session": "^0.1.0"
+  }
+}
