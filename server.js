@@ -89,7 +89,8 @@ mongoose.connection.on('open', function (ref) {
     });
 })
 
-/*
+// gammel standard mongodb-connection lavet om til mongoose.
+/* 
 http.listen(3000, function () {
     console.log("Server started.");
 
@@ -99,7 +100,6 @@ http.listen(3000, function () {
         useUnifiedTopology: true
 
 */
-
 
 
         app.get("/signup", function (req, res){
@@ -131,6 +131,8 @@ http.listen(3000, function () {
 
                 var newUser = new User(userObj);
 
+
+
                 bcrypt.genSalt(10,(err,salt)=>
                 bcrypt.hash(newUser.password,salt,
                     (err,hash)=> {
@@ -141,10 +143,27 @@ http.listen(3000, function () {
                         newUser.save()
                         .then((value)=>{
                             console.log(value)
-                            //req.flash('success_msg','You have now registered!');
-                            res.redirect(`/verify-email?token=${userObj.emailToken}`);
+                            req.flash('success_msg','You have now registered!');
+                            //window.location.href ="/verify-email";
+                            sgMail.setApiKey(process.env.SENDGRID_API_KEY='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')
+                            const msg = {
+                            to: 'test@example.com', // Change to your recipient
+                            from: 'test@example.com', // Change to your verified sender
+                            subject: 'Sending with SendGrid is Fun',
+                            text: 'and easy to do anywhere, even with Node.js',
+                            html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+                            }
+                            sgMail
+                            .send(msg)
+                            .then(() => {
+                                console.log('Email sent')
+                            })
+                            .catch((error) => {
+                                console.error(error)
+                            })
                         })
                         .catch(value=> console.log(value));
+
            
                     }));
 

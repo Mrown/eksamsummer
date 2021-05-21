@@ -105,7 +105,8 @@
                     if (response.status == "success") {
                         
                     }
-                window.location.href ="/verify-email";
+                    // beskeden der vises til brugeren når de modtager mail
+                /*window.location.href ="/verify-email";
                 const msg = {
                     from: "Noreply@YaSite.com",
                     to: user.email,
@@ -121,8 +122,9 @@
                         <p>Please click the link below to verify your account.</p>
                         <a>http://${req.headers.host}/verify-email?token=${user.emailToken}</a>
                     `
-                }
-                try {
+                }*/
+                // funktionen der sender email via grid og enten skriver sucess eller error
+ /*               try {
                     await sgMail.send(msg);
                     req.flash("sucess", "thanks for registerings. please check your email to complete your verification.");
                     res.redirect('/');
@@ -130,7 +132,7 @@
                     console.log(error);
                     req.flash("error", "something went wrong, pleace contact service@YaSite.com");
                     res.redirect('/');
-                }
+                }*/
                 }
             };
             ajax.send(new FormData(form));
